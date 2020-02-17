@@ -1,0 +1,26 @@
+{
+  "name": "nuclearBalance",
+  "version": "1.0.0",
+  "description": "This is an eCommerce shopping site that will be refactoring consistently with various tech",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atomize101/nuclearBalance.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Atomize101/nuclearBalance/issues"
+  },
+  "homepage": "https://github.com/Atomize101/nuclearBalance#readme"
+}

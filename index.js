@@ -15,17 +15,29 @@ app.get('/', (req, res) => {
     `);
 });
 
-app.post('/', (req,res) => {
-    req.on('data', data => {
-        const parsed = data.toString('utf8').split('&')
-        const formData = {};
+const bodyParser = (req, res, next) => {
+    if (req.method === 'POST') {
 
-        for(let pair of parsed) {
-            const [key, value] = pair.split('=');
-            formData[key] = value;
-        }
-        console.log(formData);
-    });
+        req.on('data', data => {
+
+            const parsed = data.toString('utf8').split('&')
+            const formData = {};
+
+            for (let pair of parsed) {
+                const [key, value] = pair.split('=');
+                formData[key] = value;
+            }
+            req.body = formData;
+            next();
+        });
+    } else {
+        next();
+    }
+}
+
+
+app.post('/', bodyParser, (req, res) => {
+    console.log(req.body)
     res.send('Account Created');
 });
 

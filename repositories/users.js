@@ -19,12 +19,24 @@ class UserRepository {
             encoding: 'utf8'
         }));
     }
-}
 
+    async create(attrs) {
+        const records = await this.getAll();
+        records.push(attrs);
+
+        await fs.promises.writeFile(this.filename, JSON.stringify(records), {
+            encoding: 'utf8'
+        });
+    }
+}
 const test = async () => {
 
     const repo = new UserRepository('users.json');
+
+    await repo.create({ email: 'test@test.com', password: 'blah' })
+
     const users = await repo.getAll();
+
     console.log(users);
 }
 

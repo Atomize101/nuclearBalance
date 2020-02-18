@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+// User can now use bodyParser function in any route handler
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.get('/', (req, res) => {
     res.send(`
         <div>
@@ -16,7 +19,7 @@ app.get('/', (req, res) => {
     `);
 });
 
-app.post('/', bodyParser.urlencoded({ extended: true }), (req, res) => {
+app.post('/', (req, res) => {
     console.log(req.body)
     res.send('Account Created');
 });

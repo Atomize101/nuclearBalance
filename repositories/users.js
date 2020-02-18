@@ -18,18 +18,19 @@ class UserRepository {
         const contents = await fs.promises.readFile(this.filename, {
             encoding: 'utf8'
         });
-        // Read it
-        console.log(contents);
         // Parse it
+        const data = JSON.parse(contents);
         // Return Parse data
 
+        return data; 
     }
 }
 
 const test = async () => {
 
     const repo = new UserRepository('users.json');
-    await repo.getAll();
+    const users = await repo.getAll();
+    console.log(users);
 }
 
 test();

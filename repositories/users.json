@@ -6,7 +6,12 @@
   },
   {
     "email": "test@test.com",
+    "password": "blah",
+    "id": "4cb64efb"
+  },
+  {
+    "email": "test@test.com",
     "password": "password",
-    "id": "c4195e8d"
+    "id": "29565320"
   }
 ]

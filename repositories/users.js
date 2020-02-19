@@ -1,4 +1,5 @@
 const fs = require('fs');
+const crypto = require('crypto');
 
 class UserRepository {
     constructor(filename) {
@@ -11,29 +12,35 @@ class UserRepository {
             false.accessSync(this.filename);
         } catch (err) {
             fs.writeFileSync(this.filename, '[]');
-        }
+        };
     }
     async getAll() {
-        // Open the filename
-        return JSON.parse(await fs.promises.readFile(this.filename, {
-            encoding: 'utf8'
-        }));
+        return JSON.parse(
+            await fs.promises.readFile(this.filename, {
+                encoding: 'utf8'
+            })
+        );
     }
 
     async create(attrs) {
+        attrs.id = this.randomID();
         const records = await this.getAll();
         records.push(attrs);
 
-        await fs.promises.writeFile(this.filename, JSON.stringify(records), {
-            encoding: 'utf8'
-        });
+        await this.writeAll(records);
+    }
+    async writeAll(records) {
+        await fs.promises.writeFile(this.filename, JSON.stringify(records, null, 2));
+    }
+    randomID() {
+        return crypto.randomBytes(4).toString('hex');
     }
 }
+
 const test = async () => {
 
     const repo = new UserRepository('users.json');
-
-    await repo.create({ email: 'test@test.com', password: 'blah' })
+    await repo.create({ email: 'test@test.com', password: 'gah' });
 
     const users = await repo.getAll();
 

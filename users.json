@@ -3,5 +3,10 @@
     "email": "chris2@chris.com",
     "password": "password",
     "id": "f3f1cc60"
+  },
+  {
+    "email": "test3@test.com",
+    "password": "6967a70eb1a1713b0d1c5958035ed03c88755f3ae8868d0ac1209f921938c01fae86dbc65d9d3d7aa4d9c4c795a079fe2fa932d27783ef484af4d4ccc50bc997.45d12d88dfabc20a",
+    "id": "4a13f9dd"
   }
 ]

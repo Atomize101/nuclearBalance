@@ -76,11 +76,4 @@ class UserRepository {
     }
 }
 
-const test = async () => {
-
-    const repo = new UserRepository('users.json');
-    const user = await repo.getOneBy({ id: 'test@test.com'});
-    console.log(user);
-}
-
-test();
+module.exports = new UserRepository('users.json')

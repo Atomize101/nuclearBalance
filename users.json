@@ -38,5 +38,20 @@
     "email": "test7@test.com",
     "password": "blah1",
     "id": "07f1fcda"
+  },
+  {
+    "email": "atomize101@gmail.com",
+    "password": "blah",
+    "id": "c00aca7b"
+  },
+  {
+    "email": "asd@asd.com",
+    "password": "gee",
+    "id": "3e8cd9b0"
+  },
+  {
+    "email": "asd@asd1.com",
+    "password": "gee",
+    "id": "3435d180"
   }
 ]

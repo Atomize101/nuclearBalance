@@ -1,15 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
 const usersRepo = require('./repositories/users');
 
 const app = express();
 
 // User can now use bodyParser function in any route handler
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieSession({
+    name: 'session',
+    keys: ['lasdojkwcnmoiawdjoasdjjiom']
+}));
 
 app.get('/', (req, res) => {
     res.send(`
         <div>
+        Your id is: ${req.session.userId}
             <form method="POST">
                 <input name="email" placeholder="email" />
                 <input name="password" placeholder="password" />
@@ -31,11 +37,14 @@ app.post('/', async (req, res) => {
         return res.send('Passwords must match');
     }
 
-    res.send('Account Created');
-});
+    // Create a user in our user repo to represent this person
 
-app.get('/boo', (req, res) => {
-    res.send('hi boo');
+    const user = await usersRepo.create({ email, password });
+
+    // Store the id of that user inside the user cookie
+    req.session.userId = user.id;
+
+    res.send('Account Created');
 });
 
 app.listen(3000, () => {

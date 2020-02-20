@@ -28,6 +28,7 @@ class UserRepository {
         records.push(attrs);
 
         await this.writeAll(records);
+        return attrs;
     }
     async writeAll(records) {
         await fs.promises.writeFile(this.filename, JSON.stringify(records, null, 2));

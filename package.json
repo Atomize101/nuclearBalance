@@ -4,6 +4,7 @@
   "description": "This is an eCommerce shopping site that will be refactoring consistently with various tech",
   "main": "index.js",
   "dependencies": {
+    "cookie-session": "^1.4.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.2"
   },

@@ -19,7 +19,12 @@ router.post('/signup',
                 throw new Error('Email in use');
             }
         }),
-        check('password').trim().isLength({ min: 4, max: 20 }),
+        check('password').trim().isLength({ min: 4, max: 20 }).withMessage('Must be between 4 and 20 characters')
+        .custom((passwordConfirmation, { req }) => {
+            if (password !== req.body.password) {
+                throw new Error('Passwords must match');
+            }
+        }),
         check('passwordConfirmation').trim().isLength({ min: 4, max: 20 })
     ],
 

@@ -26,6 +26,11 @@ router.post('/signup',
     async (req, res) => {
 
         const errors = validationResult(req);
+
+        if(!errors.isEmpty()) {
+            return res.send(signinTemplate({ req, errors }));
+        }
+        
         console.log(errors);
         const { email, password } = req.body;
         // Create a user in our user repo to represent this person

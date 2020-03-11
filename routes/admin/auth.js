@@ -20,16 +20,16 @@ router.post('/signup',
     [
         requireEmail,
         requirePassword,
-        check('passwordConfirmation').trim().isLength({ min: 4, max: 20 }).withMessage('Must be between 4 and 20 characters')
+        //check('passwordConfirmation').trim().isLength({ min: 4, max: 20 }).withMessage('Must be between 4 and 20 characters')
     ],
 
     async (req, res) => {
 
         const errors = validationResult(req);
 
-        if(!errors.isEmpty()) {
-            return res.send(signinTemplate({ req, errors }));
-        }
+        //if(!errors.isEmpty()) {
+          //  return res.send(signinTemplate({ req, errors }));
+        //}
         
         console.log(errors);
         const { email, password } = req.body;

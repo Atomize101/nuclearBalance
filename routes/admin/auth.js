@@ -7,7 +7,7 @@ const signinTemplate = require('../../views/admin/auth/signin');
 const {
   requireEmail,
   requirePassword,
-  requirePasswordConfirmation,
+  //requirePasswordConfirmation,
   requireEmailExists,
   requireValidPasswordForUser
 } = require('./validators');
@@ -20,7 +20,8 @@ router.get('/signup', (req, res) => {
 
 router.post(
   '/signup',
-  [requireEmail, requirePassword, requirePasswordConfirmation],
+  [requireEmail, requirePassword, //requirePasswordConfirmation
+  ],
   async (req, res) => {
     const errors = validationResult(req);
 
